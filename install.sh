@@ -174,7 +174,8 @@ $UV_CMD venv "$INSTALL_DIR/venv" --python "$PYTHON_VERSION"
 echo -e "${GREEN}✓${NC} Virtual environment created"
 
 echo -e "${CYAN}→${NC} Installing dependencies (this may take a minute)..."
-"$INSTALL_DIR/venv/bin/pip" install -e "$INSTALL_DIR" 2>&1
+"$INSTALL_DIR/venv/bin/python" -m ensurepip 2>/dev/null || true
+"$INSTALL_DIR/venv/bin/python" -m pip install -e "$INSTALL_DIR" 2>&1
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}✓${NC} Elitza Agent installed"
 else
